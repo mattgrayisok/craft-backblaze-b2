@@ -1,0 +1,59 @@
+{% import "_includes/forms" as forms %}
+
+{{ forms.autosuggestField({
+    label: "Account ID"|t('backblaze-b2'),
+    id: 'accountId',
+    name: 'accountId',
+    suggestEnvVars: true,
+    value: volume.accountId,
+    errors: volume.getErrors('accountId'),
+    class: 'b2-account-id',
+    instructions: 'Your Backblaze account ID.'|t('backblaze-b2')
+}) }}
+
+{{ forms.autosuggestField({
+    label: "Application Key"|t('backblaze-b2'),
+    id: 'applicationKey',
+    name: 'applicationKey',
+    suggestEnvVars: true,
+    value: volume.applicationKey,
+    errors: volume.getErrors('applicationKey'),
+    class: 'b2-application-key',
+    instructions: 'This can be the master Application Key or a limited access Key'|t('backblaze-b2')
+}) }}
+
+{% set bucketInput %}
+    <div class="flex fullwidth">
+        {{ forms.select({
+            id: 'bucket',
+            name: 'bucket',
+            options: { (volume.bucket): volume.bucket },
+            value: volume.bucket,
+            readonly: false,
+            class: 'b2-bucket-select'
+        }) }}
+    </div>
+{% endset %}
+
+
+{{ forms.field({
+    label: "Bucket"|t('backblaze-b2'),
+    id: 'bucket',
+    required: true,
+    errors: volume.getErrors('bucket'),
+}, bucketInput) }}
+
+{{ forms.autosuggestField({
+    label: "Subfolder"|t('backblaze-b2'),
+    instructions: "If you want to use a bucket’s subfolder as a Volume, specify the path to use here.
+                    This is required if you are using a scoped Application Key."|t('backblaze-b2'),
+    id: 'subfolder',
+    class: 'ltr',
+    name: 'subfolder',
+    suggestEnvVars: true,
+    value: volume.subfolder,
+    errors: volume.getErrors('subfolder'),
+    placeholder: "path/to/subfolder"|t('backblaze-b2')
+}) }}
+
+{% do view.registerAssetBundle("mattgrayisok\\backblazeb2\\BackblazeB2Bundle") %}

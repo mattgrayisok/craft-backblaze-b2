@@ -1,0 +1,42 @@
+{
+  "name": "mattgrayisok/craft-backblaze-b2",
+  "description": "Backblaze B2 integration for Craft CMS",
+  "version": "1.0.0",
+  "type": "craft-plugin",
+  "keywords": [
+    "backblaze",
+    "cms",
+    "craftcms",
+    "flysystem",
+    "b2",
+    "yii2"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Matt Gray",
+      "homepage": "https://mattgrayisok.com/"
+    }
+  ],
+  "support": {
+    "email": "matt@mattgrayisok.com",
+    "issues": "https://github.com/mattgrayisok/craft-backblaze-b2/issues?state=open",
+    "source": "https://github.com/mattgrayisok/craft-backblaze-b2",
+    "docs": "https://github.com/mattgrayisok/craft-backblaze-b2/blob/master/README.md",
+    "rss": "https://github.com/mattgrayisok/craft-backblaze-b2/commits/master.atom"
+  },
+  "require": {
+    "craftcms/cms": "^3.1.5",
+    "mhetreramesh/flysystem-backblaze": "^1.5.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "craft\\awss3\\": "src/"
+    }
+  },
+  "extra": {
+    "name": "Backblaze B2",
+    "handle": "backblaze-b2",
+    "documentationUrl": "https://github.com/mattgrayisok/craft-backblaze-b2/blob/master/README.md"
+  }
+}
